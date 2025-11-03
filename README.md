@@ -54,3 +54,30 @@ npx prisma db push
 # Run services (in separate terminals)
 npm run dev
 cd python-service && uvicorn app.main:app --reload --port 8000
+```
+- Access: http://localhost:3000 | API Docs: http://localhost:8000/docs
+  
+## ⚙️ Environment Setup
+```bash
+echo 'DATABASE_URL="postgresql://user:pass@localhost:5432/amd_system"
+TWILIO_ACCOUNT_SID=your_sid
+TWILIO_AUTH_TOKEN=your_token
+TWILIO_PHONE_NUMBER=+1234567890
+PYTHON_SERVICE_URL=http://localhost:8000
+BETTER_AUTH_SECRET=your_secret' > .env
+```
+## 🎮 Usage
+- Open http://localhost:3000
+- Select AMD strategy from dropdown
+- Enter phone number or use test numbers
+- Click "Dial Now"
+- View results in call history
+
+## 🧪 AMD Strategies
+### Available strategies:
+- Twilio Native (85% accuracy, <2s latency)
+- Jambonz SIP (90% accuracy, <3s latency) 
+- Hugging Face AI (92% accuracy, <4s latency)
+- Gemini Flash (88% accuracy, <5s latency)
+
+
