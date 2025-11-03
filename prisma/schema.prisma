@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Call {
+  id          String   @id @default(cuid())
+  userId      String
+  phoneNumber String
+  strategy    String
+  status      String
+  amdResult   String?
+  confidence  Float?
+  duration    Int?
+  externalId  String?
+  errorMessage String?
+  startedAt   DateTime @default(now())
+  endedAt     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([status])
+  @@map("calls")
+}
